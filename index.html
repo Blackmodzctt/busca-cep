@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Busca CEP</title>
+</head>
+<body>
+    <!--Container Principal-->
+    <main class="container">
+        <!--Título da página-->
+        <h1>Busca de CEP</h1>
+
+        <!--Formulário-->
+        <form action="" id="form-cep">
+            <input type="text" placeholder="Digite o CEP (somente números)" required maxlength="8" pattern="\d{8}" id="input-cep"> <!--Pattern-->
+
+            <!--Botão do submit-->
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="resultado" class="resultado">
+
+        </div>
+    </main>
+</body>
+</html>
