@@ -1,43 +1,31 @@
-// FUNÇÃO PRINCIPAL DO SISTEMA
-
-function buscaCep(event) {
-    event.preventDefault(); // Impede que a página recarregue
-
-    let cep = document.getElementById("input-cep").value // Acessando o valor que tá vindo do input
-
-    //Colocando uma mensagem de carregamento
+// Função principal do sistema
+function buscarCep(event) {
+    event.preventDefault(); // função que remove o comportamento padrão do formulário ao enviar 
+    
+    // acessando o valor do input para a variável cep
+    const cep = document.getElementById("input-cep").value
+    
     document.getElementById("resultado").innerText = "Carregando..."
-
-    //Fetch busca um link e fazemos um junção trocando o cep predefinido e colocamos a variavel cep para ser o que o usuario mudar
-
-    fetch("https://viacep.com.br/ws/"+cep+"/json/")
-
-    // Promessa que tranforma como queremos
-    .then(resposta >= resposta.json())
-    // Tranforma a resposta em resposta.json
-
-    // Vai transformar a div na resposta
-    //"dados" contém todas as informações do endereço
     
-    .then(dados => {
-        // Se der erro vai aparecer a mensagem de erro
+    // função para requisitar um recurso de uma API, no nosso caso as informações do Cep que o usuário digitou
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    .then((resposta) => resposta.json()) // formatação da resposta para JSON
+    .then((dados) => { // recebimento dos dados do CEP
         if(dados.erro) {
-            document.getElementById("resultado").innerHTML = "<strong> Cep não encontrado </strong>"
-        }
-        // Colocando o que vai mostrar na parte "rua", digitando "dados.logradouro" como está na api
-        document.getElementById("resultado").innerHTML = 
-        `
-        <h3>Endereço Encontrado:</h3>
-        <p><strong>Cep:</strong> ${dados.cep}</p>
+            document.getElementById("resultado").innerHTML = "<strong>CEP não encontrado.</strong>"
+            return;
+        } 
+        
+        // Inserindo no HTML os dados do CEP
+        document.getElementById("resultado").innerHTML = `
         <p><strong>Rua:</strong> ${dados.logradouro}</p>
+        <p><strong>Cidade:</strong> ${dados.localidade}</p>
+        <p><strong>Estado:</strong> ${dados.estado}</p>
         <p><strong>Bairro:</strong> ${dados.bairro}</p>
-        <p><strong>Estado:</strong> ${dados.localidade}</p>`
-
+        `
     })
-
-    // Caso perca a conexão com a internet ou falha na API
-    .catch(() => {
-        document.getElementById("resultado").innerHTML= "Erro ao buscar cep"
+    .catch((e) => { // Caso a chamada http não dê certo, o servidor retornará um erro, e vai cair nesse bloco catch
+        console.log(e)
+        document.getElementById("resultado").innerHTML = "<strong>Erro ao buscar CEP. Tente novamente.</strong>"
     })
-    
 }
