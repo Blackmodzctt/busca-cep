@@ -20,7 +20,7 @@ body {
 }
 /*mexendo na caixa do form*/
 .container {
-    background-color: rgb(16, 16, 16);
+    background-color: rgb(255, 255, 255);
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 10 px 25px rgba(0, 0, 0, 0.3);
@@ -31,9 +31,8 @@ body {
 /*mexendo no título*/
 h1 {
     margin: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
-
 
 #form-cep {
     display: flex;
