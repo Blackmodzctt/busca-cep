@@ -12,7 +12,7 @@
 
 /*mexendo na cor da página*/
 body {
-    background-color: bisque;
+    background-color: rgb(255, 255, 255);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ body {
 }
 /*mexendo na caixa do form*/
 .container {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(16, 16, 16);
     padding: 30px 40px;
     border-radius: 20px;
     box-shadow: 0 10 px 25px rgba(0, 0, 0, 0.3);
